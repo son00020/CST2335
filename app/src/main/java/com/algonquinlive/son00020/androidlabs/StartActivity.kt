@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_start.*
 
@@ -23,6 +24,7 @@ class StartActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+        var startChat = findViewById<Button>(R.id.chatButton)
       var startButton=  findViewById<Button>(R.id.StartButton2)
         startButton?.setOnClickListener {
 
@@ -31,7 +33,10 @@ class StartActivity : Activity() {
             startActivityForResult(intent,50)
 
         }
-
+startChat.setOnClickListener(View.OnClickListener {
+    var newActivity = Intent(this,chatWindow::class.java)
+    startActivityForResult(newActivity,50)
+})
 
 
     }
